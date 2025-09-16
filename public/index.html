@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastShrink - URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>⚡Fast Shrink</h1>
+        <h2>Shorten, Copy & Share</h2>
+        <p class="subtitle">Turn your long links into short, smart ones instantly.</p>
+
+        <div class="input-box">
+            <input type="text" id="longUrl" placeholder="Paste your long URL here...">
+            <button id="shortenBtn">🔗 Shorten URL</button>
+        </div>
+
+        <div id="result" class="result hidden">
+            <p class="success-text">Your shortened URL is ready! 🎉</p>
+            <div class="short-box">
+                <a href="#" id="shortUrl" target="_blank"></a>
+                <div class="btns">
+                    <button id="copyBtn" class="copy-btn">Copy</button>
+                    <button id="qrBtn" class="qr-btn">QR Code</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="qrBox" class="qr-box hidden">
+            <h3>QR Code</h3>
+            <img id="qrImage" alt="QR Code" />
+            <p class="qr-sub">Scan this QR code to open the shortened URL<br>on your mobile device</p>
+        </div>
+    </div>
+
+    <div class="footer">© 2025 Made with ❤️ by Darshan Dixit</div>
+
+    <div id="toast" class="toast hidden">Copied to clipboard!<br>The short URL has been copied to your clipboard.</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
