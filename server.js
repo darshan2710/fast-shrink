@@ -8,7 +8,7 @@ const urlRoutes = require('./routes/url');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -63,6 +63,25 @@ app.post('/debug/test-write', async (req, res) => {
     } catch (err) {
         console.error('Test write failed:', err);
         res.status(500).json({ok : false, error : err.message});
+    }
+});
+
+// Add this route before your other routes
+app.get('/:shortCode', async (req, res) => {
+    const {shortCode} = req.params;
+    try {
+        const url = await Url.findOne({shortCode});
+        if (url) {
+            url.clicks += 1;
+            await url.save();
+            return res.redirect(url.originalUrl);
+        }
+        else {
+            return res.status(404).json({error : 'URL not found'});
+        }
+    } catch (error) {
+        console.error('Error retrieving URL:', error);
+        res.status(500).json({error : 'Error retrieving URL'});
     }
 });
 

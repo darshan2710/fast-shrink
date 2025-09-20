@@ -7,7 +7,7 @@ document.getElementById("shortenBtn").addEventListener("click", async () => {
 
     // This is the new part that calls your backend API
     try {
-        const response = await fetch('http://localhost:3000/api/shorten', {
+        const response = await fetch('https://fast-shrink.onrender.com/api/shorten', {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
